@@ -1,6 +1,8 @@
-# Cornell MPS Project - Fall 2023
+# Cornell MPS Capstone Project - Fall 2023
 
 Home directory for the Cornell MPS project for Fall 2023. This project contains a BIS (Bureau of Industry and Security) ETL (Extract, Transform, Load) pipeline.
+
+![2025-03-20_11-10-53](https://github.com/user-attachments/assets/57fc6571-9f3f-40f0-a47c-c97c23313bbd)
 
 ## Prerequisites
 
