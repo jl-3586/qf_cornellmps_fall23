@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  # Full ETL pipeline
+  etl-pipeline:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./pdfs:/app/pdfs
+      - ./logs:/app/logs
+    environment:
+      - TESSERACT_PATH=/usr/bin/tesseract
+    command: python run_etl_pipeline.py
+  
+  # Individual services
+  bis-scraper:
+    build: .
+    volumes:
+      - ./data:/app/data
+    environment:
+      - TESSERACT_PATH=/usr/bin/tesseract
+    command: python -m bis.aav_scraping
+    
+  bis-export-violations:
+    build: .
+    volumes:
+      - ./data:/app/data
+    environment:
+      - TESSERACT_PATH=/usr/bin/tesseract
+    command: python -m bis.ev_scraping
+    
+  # Example service for PDF processing
+  pdf-processor:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./pdfs:/app/pdfs
+    environment:
+      - TESSERACT_PATH=/usr/bin/tesseract
+    # This is a placeholder command - replace with actual PDF processing script
+    command: echo "Replace with PDF processing command"
